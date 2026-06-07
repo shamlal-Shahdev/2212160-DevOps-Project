@@ -13,4 +13,3 @@ def test_health_contains_student_reg(client):
     response = client.get("/health")
     data = response.json()
     assert data["student"] == "BSCS-2212160"
-      

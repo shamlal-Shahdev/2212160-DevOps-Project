@@ -79,4 +79,3 @@ def get_student(reg_no: str, db: Session = Depends(get_db)):
     if not student:
         raise HTTPException(status_code=404, detail="Student not found")
     return student
-    
