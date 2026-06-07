@@ -10,3 +10,4 @@ class Student(Base):
     name = Column(String, nullable=False)
     semester = Column(Integer, nullable=False)
     section = Column(String, nullable=False)
+    
