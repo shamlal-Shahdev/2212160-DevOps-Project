@@ -40,3 +40,4 @@ def test_duplicate_reg_no_returns_409(client):
     client.post("/students", json={**STUDENT, "reg_no": "TEST-DUP"})
     response = client.post("/students", json={**STUDENT, "reg_no": "TEST-DUP"})
     assert response.status_code == 409
+    
