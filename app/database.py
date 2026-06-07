@@ -8,8 +8,9 @@ DATABASE_URL = os.getenv(
     "postgresql://devops_user:devops_pass@db:5432/devops_db"
 )
 
-engine = create_engine(DATABASE_URL)
+engine = engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
 
-# Export text() so main.py can use it for the health che
+# Export text() so main.py can use it for the health check
+__all__ = ["engine", "SessionLocal", "Base", "text"]
