@@ -11,8 +11,11 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy application code
+# Copy application code and test config
 COPY app/ ./app/
+COPY pytest.ini .
+
+ENV PYTHONPATH=/app
 
 # Switch to non-root user
 USER appuser

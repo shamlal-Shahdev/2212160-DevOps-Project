@@ -7,7 +7,8 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    needs: []   # Remove this line if you want to require CI to pass first
+    # [] ko hata kar humne 'test' likha taaki pehle CI file run ho
+    needs: [test]   
 
     steps:
       - name: Deploy to EC2 via SSH
@@ -19,6 +20,9 @@ jobs:
           script: |
             cd ~/devops-project
             git pull origin main
+            # Agar aapke server par .env.production file nahi bani hai, 
+            # toh yeh line fail ho sakti hai. Isliye 'touch' use kar rhe hain safe side ke liye.
+            touch .env.production
             cp .env.production .env
             docker compose -f docker-compose.prod.yml down
             docker compose -f docker-compose.prod.yml up -d --build
