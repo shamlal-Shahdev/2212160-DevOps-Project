@@ -7,8 +7,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    # [] ko hata kar humne 'test' likha taaki pehle CI file run ho
-    needs: [test]   
+    needs: [test]   # Remove this line if you want to require CI to pass first
 
     steps:
       - name: Deploy to EC2 via SSH
